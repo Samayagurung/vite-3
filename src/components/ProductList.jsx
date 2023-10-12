@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-const ProductList = ({ prodX, deleteHandle, viewHandle }) => {
+const ProductList = ({ prodX, deleteHandle, viewHandle, editHandle }) => {
   return (
     <>
       <Card className="productCard" style={{ height: "400px" }}>
@@ -23,7 +23,7 @@ const ProductList = ({ prodX, deleteHandle, viewHandle }) => {
           <Button variant="secondary" className="me-2" onClick={(e)=>viewHandle(e,prodX.id)}>
             View
           </Button>
-          <Button variant="dark" className="me-2">
+          <Button variant="dark" className="me-2" onClick={(e=>editHandle(e,prodX.id))}>
             Edit
           </Button>
           <Button
