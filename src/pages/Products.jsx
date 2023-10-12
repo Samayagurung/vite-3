@@ -4,11 +4,14 @@ import axios from "axios";
 import AddModal from "../components/AddModal";
 import ViewModal from "../components/ViewModal";
 import EditModal from "../components/EditModal";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
+import Form from "react-bootstrap/Form";
 
 const Products = () => {
   const URL = import.meta.env.VITE_BACKEND_URL;
 
   const [product, setProduct] = useState([]);
+  const [originalProduct, setOriginalProduct] = useState([]);
   const [addProduct, setAddProduct] = useState([]);
   const [viewProduct, setViewProduct] = useState([]);
   const [editProduct, setEditProduct] = useState([]);
@@ -23,6 +26,7 @@ const Products = () => {
         const resp = await axios.get(URL + "/products");
         // console.log(resp.data.products)
         setProduct(resp.data.products);
+        setOriginalProduct(resp.data.products);
       } catch (error) {
         console.log(error);
       }
@@ -122,12 +126,35 @@ const Products = () => {
     setEditShow(false);
   };
 
+  // SearchBar
+
+  const searchProducts = (e) => {
+    e.preventDefault();
+    // console.log(e.target.value)
+    // console.log(product[0].title.toLowerCase().includes(e.target.value.toLowerCase()))
+
+    const searchedData = originalProduct.filter((item) => {
+      return item.title.toLowerCase().includes(e.target.value.toLowerCase());
+    });
+    setProduct(searchedData);
+  };
+
   return (
     <>
-      <button className="btn btn-outline-dark mt-3 ms-3" onClick={addHandle}>
-        {" "}
-        Add Product
-      </button>
+      <div className="d-flex justify-content-between mt-3 ">
+        <button className="btn btn-outline-dark " onClick={addHandle}>
+          {" "}
+          Add Product
+        </button>
+        <FloatingLabel
+          controlId="floatingImageUrl"
+          label="Search Product Here"
+          className=""
+        >
+          <Form.Control type="text" placeholder="" onChange={searchProducts} />
+        </FloatingLabel>
+      </div>
+
       <div className="d-flex flex-wrap justify-content-center">
         {product.map((item) => {
           return (
@@ -139,25 +166,25 @@ const Products = () => {
             />
           );
         })}
+        <AddModal
+          addShow={addShow}
+          handleClose={handleClose}
+          handleChange={handleChange}
+          addHandler={addHandler}
+        />
+        <ViewModal
+          viewShow={viewShow}
+          viewProdX={viewProduct}
+          viewCloseHandle={viewCloseHandle}
+        />
+        <EditModal
+          showEdit={editShow}
+          editChangeHandle={editChangeHandle}
+          editProdX={editProduct}
+          editProductHandle={editProductHandle}
+          editCloseHandle={editCloseHandle}
+        />
       </div>
-      <AddModal
-        addShow={addShow}
-        handleClose={handleClose}
-        handleChange={handleChange}
-        addHandler={addHandler}
-      />
-      <ViewModal
-        viewShow={viewShow}
-        viewProdX={viewProduct}
-        viewCloseHandle={viewCloseHandle}
-      />
-      <EditModal
-        showEdit={editShow}
-        editChangeHandle={editChangeHandle}
-        editProdX={editProduct}
-        editProductHandle={editProductHandle}
-        editCloseHandle={editCloseHandle}
-      />
     </>
   );
 };

@@ -24,6 +24,7 @@ const Signin = () => {
       );
       // console.log(resp)
       if (resp.data.status) {
+        localStorage.setItem("isLoggedIn", true)
         successToast(resp.data.message);
       }
     } catch (error) {
