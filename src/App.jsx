@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
+import Products from "./pages/Products";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
+        <Route path="/product" element={<Products />} />
       </Routes>
 
       <ToastContainer />

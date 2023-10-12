@@ -5,10 +5,19 @@
   /* text-align: center; */
 }
 
-/* Signup */
-.signupCard{
+
+.Card{
   width: 35rem;
   /* border: solid red; */
   margin: 10rem auto;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+/* Product */
+.productCard{
+  width: 22rem;
+  /* border: solid red; */
+  margin: 1rem auto;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+

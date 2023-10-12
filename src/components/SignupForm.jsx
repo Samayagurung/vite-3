@@ -6,7 +6,7 @@ import Form from "react-bootstrap/Form";
 const SignupForm = ({handleChange,signupHandle}) => {
   return (
     <>
-      <Card className="signupCard">
+      <Card className="Card">
         <Card.Header>
           <h3 className="text-info">Sign Up Form</h3>
         </Card.Header>

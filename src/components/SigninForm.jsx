@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 
 const SigninForm = ({ handleChange, loginHandle }) => {
   return (
-    <Card className="signupCard">
+    <Card className="Card">
       <Card.Header>
         <h3 className="text-dark">Log in Form</h3>
       </Card.Header>
