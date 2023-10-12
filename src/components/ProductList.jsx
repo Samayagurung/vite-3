@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-const ProductList = ({ prodX, deleteHandle }) => {
+const ProductList = ({ prodX, deleteHandle, viewHandle }) => {
   return (
     <>
       <Card className="productCard" style={{ height: "400px" }}>
@@ -20,7 +20,7 @@ const ProductList = ({ prodX, deleteHandle }) => {
           </Card.Text>
         </Card.Body>
         <Card.Footer className="text-center">
-          <Button variant="secondary" className="me-2">
+          <Button variant="secondary" className="me-2" onClick={(e)=>viewHandle(e,prodX.id)}>
             View
           </Button>
           <Button variant="dark" className="me-2">
