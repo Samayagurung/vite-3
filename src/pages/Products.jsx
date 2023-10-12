@@ -24,6 +24,8 @@ const Products = () => {
     getProduct();
   }, []);
 
+  // Add Product
+
   const addHandle = (e) => {
     e.preventDefault();
     // console.log('clicked')
@@ -49,6 +51,17 @@ const Products = () => {
     setAddShow(false);
   };
 
+  //  Delete Product
+
+  const deleteHandle = (e, id) => {
+    e.preventDefault();
+    // console.log("clicked")
+    const filteredProduct = product.filter((prod) => {
+      return prod.id !== id;
+    });
+    setProduct(filteredProduct);
+  };
+
   return (
     <>
       <button className="btn btn-outline-dark mt-3 ms-3" onClick={addHandle}>
@@ -57,7 +70,7 @@ const Products = () => {
       </button>
       <div className="d-flex flex-wrap justify-content-center">
         {product.map((item) => {
-          return <ProductList prodX={item} />;
+          return <ProductList prodX={item} deleteHandle={deleteHandle} />;
         })}
       </div>
       <AddModal
